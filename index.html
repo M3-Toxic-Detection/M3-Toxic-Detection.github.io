@@ -3,99 +3,649 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M³-Agent: Multi-Modal Toxic Detection</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-        .authors {
-            color: #0066cc;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        .abstract-box {
-            background-color: #f8f9fa;
-            border-left: 5px solid #2c3e50;
-            padding: 20px;
-            text-align: left;
-            margin-bottom: 40px;
-            border-radius: 4px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 5px;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background-color: #34495e;
-        }
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-    </style>
+    <title>M³-Agent: Detecting Cloaked Chinese Toxicity with Multi-Modal Cognitive Agents</title>
+    <meta name="description" content="M³-Agent: A training-free framework for detecting cloaked Chinese toxicity through multi-modal cognitive perception.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="M³-Agent: Multi-Modal Cognitive Agents for Chinese Toxicity Detection">
+    <meta property="og:description" content="Detecting cloaked Chinese toxicity through visual, audio, and semantic perception.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <span class="brand-text">M<sup>3</sup>-Agent</span>
+            </a>
 
-    <!-- Title Section -->
-    <h1>M³-Agent</h1>
-    <div class="subtitle">
-        Seeing the Unseen, Hearing the Unspoken: <br>
-        Detecting Cloaked Chinese Harmful Content with Multi-Modal Cognitive Agents
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#method">Method</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#case-study">Case Study</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section (Academic Style) -->
+    <div class="container header">
+        <h2 class="title">Seeing the Unseen, Hearing the Unspoken: Detecting Cloaked Chinese Toxicity with Multi-Modal Cognitive Agents</h2>
+        <h4 class="subtitle">
+            <span class="underline">M</span>ulti-<span class="underline">M</span>odal <span class="underline">M</span>ulti-Agent Framework (M³-Agent)
+        </h4>
+
+        <div class="author-info">
+            <span>Anonymous submission</span>
+        </div>
+
+        <!-- Paper & Code Buttons -->
+        <div class="button-container">
+            <a href="#" class="action-button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span>Paper</span>
+            </a>
+            <a href="#" class="action-button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span>Code</span>
+            </a>
+        </div>
     </div>
 
-    <!-- Placeholder for Authors (Anonymous for now) -->
-    <div class="authors">
-        Anonymous Authors (Under Review at ACL 202X)
-    </div>
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Abstract Section -->
+        <div class="section" id="abstract">
+            <h3>
+                <span class="section-title">Abstract</span>
+            </h3>
+            <div class="section-content">
+                <div class="abstract-row">
+                    <div class="abstract-text">
+                        <p>
+                            Despite the notable capabilities of Large Language Models (LLMs) in detecting harmful content, they remain vulnerable to cloaked Chinese toxicity attacks that disguise malicious Chinese content via visual glyph dismantling or phonetic variation. Such vulnerability arises from tokenization limitations that fail to capture the multi-modal interplay of Chinese semantics, phonetics, and glyphs. We propose M³-Agent—a training-free framework that simulates human cognitive perception by projecting Chinese text into visual and acoustic modalities. Specifically, our framework employs decoupled Visual, Audio, and Text agents to perceive the shape, sound, and meaning of Chinese inputs respectively, integrating these signals through a complementary fusion strategy. Extensive experiments demonstrate that M³-Agent significantly outperforms existing methods and commercial APIs. Notably, M³-Agent empowers lightweight open-source models to surpass large closed-source LLMs, validating the critical role of multi-modal perception in robust Chinese toxicity detection.
+                        </p>
+                    </div>
+                    <div class="abstract-image">
+                        <img src="images/intro.png" alt="Motivation: LLMs fail on cloaked toxicity while M³-Agent succeeds" class="responsive-image">
+                        <div class="media-caption">
+                            <strong>Figure 1:</strong> Standard LLMs fail to detect cloaked Chinese toxicity due to tokenization limitations. M³-Agent perceives the same input through visual and audio channels, successfully identifying the hidden toxic content.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Buttons -->
-    <div>
-        <a href="#" class="btn">📄 Paper (Coming Soon)</a>
-        <a href="https://github.com/M3-Toxic-Detection/M3-Toxic-Detection" class="btn">💻 Code</a>
-        <a href="#" class="btn">🤗 Dataset (Coming Soon)</a>
-    </div>
+        <!-- Method Section -->
+        <div class="section" id="method">
+            <h3>
+                <span class="section-title">Framework Overview</span>
+            </h3>
+            <div class="section-content">
+                <div class="figure-container">
+                    <img src="images/overview.png" alt="M³-Agent Framework Overview" class="responsive-image">
+                    <div class="media-caption">
+                        <strong>Figure 2:</strong> Overview of M³-Agent framework. The input text is projected into three modalities and processed by specialized agents, with results aggregated via Logical-OR fusion.
+                    </div>
+                </div>
 
-    <!-- Abstract Section -->
-    <div class="abstract-box">
-        <h3>Abstract</h3>
-        <p>
-            Detecting harmful content is crucial for the safe deployment of Large Language Models (LLMs). 
-            However, these models remain highly vulnerable to "cloaked" Chinese toxicity, where malicious intent is disguised through visual glyph dismantling or phonetic homophones. 
-            To bridge this gap, we propose <strong>M³-Agent</strong>, a training-free framework that simulates human cognitive perception by projecting text into visual and acoustic modalities. 
-            Extensive experiments demonstrate that M³-Agent significantly outperforms existing defense methods.
-        </p>
+                <h4>Three Cognitive Agents</h4>
+
+                <div class="agents-grid">
+                    <div class="agent-card agent-eye">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="agent-title">
+                                <h5>Visual Agent</h5>
+                                <span class="agent-role">"The Eye"</span>
+                            </div>
+                        </div>
+                        <p class="agent-desc">
+                            Perceives glyph-based attacks through rendered images. Detects character dismantling, radical substitution, and emoji injection by treating text as visual patterns.
+                        </p>
+                        <div class="agent-tech">
+                            <span class="tech-tag">Text-to-Image</span>
+                            <span class="tech-tag">VLM</span>
+                            <span class="tech-tag">448×448 RGB</span>
+                        </div>
+                    </div>
+
+                    <div class="agent-card agent-ear">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                                </svg>
+                            </div>
+                            <div class="agent-title">
+                                <h5>Audio Agent</h5>
+                                <span class="agent-role">"The Ear"</span>
+                            </div>
+                        </div>
+                        <p class="agent-desc">
+                            Detects phonetic attacks via synthesized speech. Captures homophones, near-sound substitutions, and tonal deviations by bypassing misleading glyphs.
+                        </p>
+                        <div class="agent-tech">
+                            <span class="tech-tag">Text-to-Speech</span>
+                            <span class="tech-tag">Audio-LLM</span>
+                            <span class="tech-tag">24kHz</span>
+                        </div>
+                    </div>
+
+                    <div class="agent-card agent-brain">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"></path>
+                                    <path d="M12 2c-2.5 0-4.5 4.5-4.5 10s2 10 4.5 10 4.5-4.5 4.5-10-2-10-4.5-10z"></path>
+                                    <path d="M2 12h20"></path>
+                                </svg>
+                            </div>
+                            <div class="agent-title">
+                                <h5>Text Agent</h5>
+                                <span class="agent-role">"The Brain"</span>
+                            </div>
+                        </div>
+                        <p class="agent-desc">
+                            Serves as the semantic anchor for high-level reasoning. Handles explicit toxic content that doesn't rely on visual or phonetic cloaking.
+                        </p>
+                        <div class="agent-tech">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">Zero-Shot</span>
+                            <span class="tech-tag">Semantic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fusion Strategy -->
+                <div class="method-box">
+                    <h4>Complementary Fusion: Logical-OR Strategy</h4>
+                    <div class="fusion-formula">
+                        <code>ŷ = d<sub>vis</sub> ∨ d<sub>aud</sub> ∨ d<sub>txt</sub></code>
+                    </div>
+                    <p>
+                        Unlike majority voting, our <strong>Logical-OR</strong> strategy ensures that toxicity detected in <em>any</em> modality is captured. Cloaked attacks are typically perceptible in only one modality while appearing benign in others—majority voting would silence correct signals through a "blind majority" effect.
+                    </p>
+                    <div class="fusion-comparison">
+                        <div class="comparison-item bad">
+                            <span class="comparison-label">Majority Voting</span>
+                            <span class="comparison-value">51.9%</span>
+                            <span class="comparison-note">on Qwen3-2B</span>
+                        </div>
+                        <div class="comparison-item good">
+                            <span class="comparison-label">Logical-OR</span>
+                            <span class="comparison-value">80.0%</span>
+                            <span class="comparison-note">on Qwen3-2B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="section" id="results">
+            <h3>
+                <span class="section-title">Key Results</span>
+            </h3>
+            <div class="section-content">
+                <!-- Radar Chart -->
+                <div class="figure-container">
+                    <img src="images/radar_combined.png" alt="Radar Chart Comparison" class="responsive-image image-medium">
+                    <div class="media-caption">
+                        <strong>Figure 3:</strong> Performance comparison across different attack types on CNTP dataset. M³-Agent consistently outperforms Text-Only and C2TU baselines across all categories.
+                    </div>
+                </div>
+
+                <h4>Main Results</h4>
+                <div class="table-wrapper">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Method</th>
+                                <th rowspan="2">Backbone</th>
+                                <th colspan="2">ToxicloakCN</th>
+                                <th>PCR-ToxiCN</th>
+                                <th colspan="5">CNTP</th>
+                            </tr>
+                            <tr>
+                                <th>Base</th>
+                                <th>Homo</th>
+                                <th>Homo</th>
+                                <th>Base</th>
+                                <th>Homo</th>
+                                <th>Phone</th>
+                                <th>Graph</th>
+                                <th class="highlight-col">ALL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="section-header">
+                                <td colspan="10">Commercial API Baselines</td>
+                            </tr>
+                            <tr>
+                                <td>Baidu API</td>
+                                <td>-</td>
+                                <td>72.0</td>
+                                <td>59.8</td>
+                                <td>41.4</td>
+                                <td>69.8</td>
+                                <td>42.2</td>
+                                <td>31.2</td>
+                                <td>43.7</td>
+                                <td class="highlight-col">42.3</td>
+                            </tr>
+                            <tr>
+                                <td>Alibaba-Comment</td>
+                                <td>-</td>
+                                <td>42.6</td>
+                                <td>33.6</td>
+                                <td>34.9</td>
+                                <td>34.6</td>
+                                <td>6.4</td>
+                                <td>11.2</td>
+                                <td>15.8</td>
+                                <td class="highlight-col">16.4</td>
+                            </tr>
+                            <tr>
+                                <td>Alibaba-UGC</td>
+                                <td>-</td>
+                                <td>35.3</td>
+                                <td>31.9</td>
+                                <td>49.6</td>
+                                <td>34.1</td>
+                                <td>17.7</td>
+                                <td>27.4</td>
+                                <td>35.1</td>
+                                <td class="highlight-col">32.1</td>
+                            </tr>
+                            <tr>
+                                <td>Tencent API</td>
+                                <td>-</td>
+                                <td>32.3</td>
+                                <td>25.4</td>
+                                <td>34.0</td>
+                                <td>28.9</td>
+                                <td>9.5</td>
+                                <td>11.9</td>
+                                <td>18.8</td>
+                                <td class="highlight-col">17.5</td>
+                            </tr>
+                            <tr class="section-header">
+                                <td colspan="10">Closed-Source Models</td>
+                            </tr>
+                            <tr>
+                                <td>Text Only</td>
+                                <td rowspan="3">GPT-4o</td>
+                                <td>78.9</td>
+                                <td>72.3</td>
+                                <td>52.3</td>
+                                <td>87.8</td>
+                                <td>38.1</td>
+                                <td>55.3</td>
+                                <td>67.7</td>
+                                <td class="highlight-col">65.8</td>
+                            </tr>
+                            <tr>
+                                <td>Text+Pinyin</td>
+                                <td>77.7</td>
+                                <td>71.5</td>
+                                <td>56.4</td>
+                                <td>84.6</td>
+                                <td>40.7</td>
+                                <td>54.2</td>
+                                <td>66.8</td>
+                                <td class="highlight-col">64.6</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>M³-Agent</strong></td>
+                                <td><strong>80.0</strong></td>
+                                <td><strong>75.4</strong></td>
+                                <td><strong>62.6</strong></td>
+                                <td><strong>93.7</strong></td>
+                                <td><strong>71.5</strong></td>
+                                <td><strong>77.7</strong></td>
+                                <td><strong>86.2</strong></td>
+                                <td class="highlight-col"><strong>84.2</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Text Only</td>
+                                <td rowspan="3">Gemini-2.5-Flash</td>
+                                <td>79.7</td>
+                                <td>74.2</td>
+                                <td>69.3</td>
+                                <td>86.3</td>
+                                <td>63.0</td>
+                                <td>72.7</td>
+                                <td>83.1</td>
+                                <td class="highlight-col">80.0</td>
+                            </tr>
+                            <tr>
+                                <td>Text+Pinyin</td>
+                                <td>80.1</td>
+                                <td>74.8</td>
+                                <td><strong>73.8</strong></td>
+                                <td>84.4</td>
+                                <td>69.4</td>
+                                <td>72.7</td>
+                                <td>81.9</td>
+                                <td class="highlight-col">79.1</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>M³-Agent</strong></td>
+                                <td><strong>83.7</strong></td>
+                                <td><strong>79.3</strong></td>
+                                <td>72.0</td>
+                                <td><strong>93.2</strong></td>
+                                <td><strong>80.0</strong></td>
+                                <td><strong>85.4</strong></td>
+                                <td><strong>91.4</strong></td>
+                                <td class="highlight-col"><strong>89.6</strong></td>
+                            </tr>
+                            <tr class="section-header">
+                                <td colspan="10">Open-Source Models</td>
+                            </tr>
+                            <tr>
+                                <td>Text Only</td>
+                                <td rowspan="4">Gemma3-12B</td>
+                                <td>75.6</td>
+                                <td>71.1</td>
+                                <td>57.3</td>
+                                <td>88.3</td>
+                                <td>56.0</td>
+                                <td>68.5</td>
+                                <td>76.9</td>
+                                <td class="highlight-col">75.4</td>
+                            </tr>
+                            <tr>
+                                <td>Text+Pinyin</td>
+                                <td>74.5</td>
+                                <td>69.3</td>
+                                <td>51.5</td>
+                                <td>85.6</td>
+                                <td>49.0</td>
+                                <td>62.3</td>
+                                <td>74.2</td>
+                                <td class="highlight-col">71.5</td>
+                            </tr>
+                            <tr>
+                                <td>C2TU</td>
+                                <td>76.3</td>
+                                <td>74.6</td>
+                                <td>66.8</td>
+                                <td>85.5</td>
+                                <td>69.9</td>
+                                <td>73.0</td>
+                                <td>77.4</td>
+                                <td class="highlight-col">76.8</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>M³-Agent</strong></td>
+                                <td><strong>80.6</strong></td>
+                                <td><strong>79.8</strong></td>
+                                <td><strong>68.1</strong></td>
+                                <td><strong>90.4</strong></td>
+                                <td><strong>86.7</strong></td>
+                                <td><strong>87.5</strong></td>
+                                <td><strong>91.0</strong></td>
+                                <td class="highlight-col"><strong>89.8</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Text Only</td>
+                                <td rowspan="4">Qwen3-32B</td>
+                                <td>80.0</td>
+                                <td>76.0</td>
+                                <td>61.5</td>
+                                <td>90.9</td>
+                                <td>66.8</td>
+                                <td>79.5</td>
+                                <td>84.8</td>
+                                <td class="highlight-col">83.7</td>
+                            </tr>
+                            <tr>
+                                <td>Text+Pinyin</td>
+                                <td>80.4</td>
+                                <td>76.3</td>
+                                <td>60.9</td>
+                                <td>91.9</td>
+                                <td>69.7</td>
+                                <td>76.2</td>
+                                <td>87.5</td>
+                                <td class="highlight-col">84.2</td>
+                            </tr>
+                            <tr>
+                                <td>C2TU</td>
+                                <td>80.7</td>
+                                <td>79.8</td>
+                                <td>64.2</td>
+                                <td>89.5</td>
+                                <td>79.6</td>
+                                <td>83.8</td>
+                                <td>85.2</td>
+                                <td class="highlight-col">85.2</td>
+                            </tr>
+                            <tr class="highlight-row best">
+                                <td><strong>M³-Agent</strong></td>
+                                <td><strong>83.1</strong></td>
+                                <td><strong>82.1</strong></td>
+                                <td><strong>64.9</strong></td>
+                                <td><strong>93.2</strong></td>
+                                <td><strong>91.5</strong></td>
+                                <td><strong>93.0</strong></td>
+                                <td><strong>94.0</strong></td>
+                                <td class="highlight-col"><strong>93.6</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Text Only</td>
+                                <td rowspan="4">Qwen3-8B</td>
+                                <td>74.8</td>
+                                <td>72.0</td>
+                                <td>58.9</td>
+                                <td>87.3</td>
+                                <td>58.4</td>
+                                <td>67.9</td>
+                                <td>77.7</td>
+                                <td class="highlight-col">75.5</td>
+                            </tr>
+                            <tr>
+                                <td>Text+Pinyin</td>
+                                <td>74.7</td>
+                                <td>71.4</td>
+                                <td>57.6</td>
+                                <td>86.6</td>
+                                <td>57.0</td>
+                                <td>66.3</td>
+                                <td>77.3</td>
+                                <td class="highlight-col">74.7</td>
+                            </tr>
+                            <tr>
+                                <td>C2TU</td>
+                                <td>75.7</td>
+                                <td>74.2</td>
+                                <td><strong>64.8</strong></td>
+                                <td>84.8</td>
+                                <td>71.6</td>
+                                <td>72.3</td>
+                                <td>78.7</td>
+                                <td class="highlight-col">77.2</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>M³-Agent</strong></td>
+                                <td><strong>79.8</strong></td>
+                                <td><strong>77.0</strong></td>
+                                <td>64.3</td>
+                                <td><strong>92.2</strong></td>
+                                <td><strong>76.9</strong></td>
+                                <td><strong>82.2</strong></td>
+                                <td><strong>88.9</strong></td>
+                                <td class="highlight-col"><strong>87.0</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Text Only</td>
+                                <td rowspan="4">Qwen3-2B</td>
+                                <td>69.7</td>
+                                <td>65.4</td>
+                                <td>46.4</td>
+                                <td>78.2</td>
+                                <td>40.6</td>
+                                <td>46.9</td>
+                                <td>60.5</td>
+                                <td class="highlight-col">57.9</td>
+                            </tr>
+                            <tr>
+                                <td>Text+Pinyin</td>
+                                <td>63.9</td>
+                                <td>57.0</td>
+                                <td>28.9</td>
+                                <td>70.0</td>
+                                <td>15.1</td>
+                                <td>21.8</td>
+                                <td>37.8</td>
+                                <td class="highlight-col">36.1</td>
+                            </tr>
+                            <tr>
+                                <td>C2TU</td>
+                                <td>70.6</td>
+                                <td>69.3</td>
+                                <td>53.2</td>
+                                <td>77.8</td>
+                                <td>57.3</td>
+                                <td>52.8</td>
+                                <td>62.6</td>
+                                <td class="highlight-col">61.0</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>M³-Agent</strong></td>
+                                <td><strong>77.5</strong></td>
+                                <td><strong>74.5</strong></td>
+                                <td><strong>63.6</strong></td>
+                                <td><strong>88.6</strong></td>
+                                <td><strong>70.0</strong></td>
+                                <td><strong>74.5</strong></td>
+                                <td><strong>81.6</strong></td>
+                                <td class="highlight-col"><strong>80.0</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="table-caption">
+                    Performance comparison (F1 Score %) across different methods and datasets. <strong>Bold</strong> indicates the best performance for each model. Gray column (ALL) highlights the most important overall metric on CNTP.
+                </p>
+
+                <!-- Key Insight Box -->
+                <div class="observation-box">
+                    <strong>Key Insight:</strong> Qwen3-2B (2B parameters) + M³-Agent achieves 80.0% F1, surpassing standalone GPT-4o (65.8%). This demonstrates that for cloaked toxicity detection, <em>perceptual fidelity matters more than reasoning depth</em>—enabling cost-effective deployment with lightweight open-source models.
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study Section -->
+        <div class="section" id="case-study">
+            <h3>
+                <span class="section-title">Case Study</span>
+            </h3>
+            <div class="section-content">
+                <div class="figure-container">
+                    <img src="images/case_study.png" alt="Case Study Examples" class="responsive-image image-medium">
+                    <div class="media-caption">
+                        <strong>Figure 4:</strong> Representative examples where Text-Only methods fail but M³-Agent succeeds. The Visual Agent detects glyph-based attacks (character dismantling), while the Audio Agent captures phonetic attacks (homophone substitution).
+                    </div>
+                </div>
+
+                <div class="case-examples">
+                    <div class="case-example">
+                        <div class="case-header">
+                            <span class="attack-type glyph">Glyph Attack</span>
+                            <span class="attack-label">Character Dismantling</span>
+                        </div>
+                        <div class="case-content">
+                            <div class="case-input">
+                                <span class="label">Input:</span>
+                                <span class="text">"氵衮" (looks like random characters)</span>
+                            </div>
+                            <div class="case-comparison">
+                                <div class="comparison-result fail">
+                                    <span class="method">Text-Only:</span>
+                                    <span class="result">Benign</span>
+                                </div>
+                                <div class="comparison-result success">
+                                    <span class="method">Visual Agent:</span>
+                                    <span class="result">Toxic ("滚" = Get lost)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-example">
+                        <div class="case-header">
+                            <span class="attack-type phonetic">Phonetic Attack</span>
+                            <span class="attack-label">Homophone Substitution</span>
+                        </div>
+                        <div class="case-content">
+                            <div class="case-input">
+                                <span class="label">Input:</span>
+                                <span class="text">"傻屄" -> "煞笔" (same pronunciation)</span>
+                            </div>
+                            <div class="case-comparison">
+                                <div class="comparison-result fail">
+                                    <span class="method">Text-Only:</span>
+                                    <span class="result">Benign</span>
+                                </div>
+                                <div class="comparison-result success">
+                                    <span class="method">Audio Agent:</span>
+                                    <span class="result">Toxic (sounds like slur)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        &copy; 2025 M³-Agent Project. All rights reserved.
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    M³-Agent &copy; 2025. This website is for academic review purposes.
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Paper</a>
+                    <a href="#" class="footer-link">Code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
